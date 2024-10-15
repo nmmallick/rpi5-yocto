@@ -11,7 +11,7 @@ repos:
   poky:
     url: https://git.yoctoproject.org/git/poky
     path: layers/poky
-    branch: master
+    branch: scarthgap
     layers:
       meta:
       meta-poky:
@@ -20,7 +20,7 @@ repos:
   meta-openembedded:
     url: http://git.openembedded.org/meta-openembedded
     path: layers/meta-openembedded
-    branch: master
+    branch: scarthgap
     layers:
       meta-oe:
       meta-python:
@@ -30,21 +30,23 @@ repos:
   meta-qt5:
     url: https://github.com/meta-qt5/meta-qt5/
     path: layers/meta-qt5
-    branch: master
+    branch: scarthgap
 
   meta-raspberry:
     url: https://github.com/agherzan/meta-raspberrypi.git
     path: layers/meta-raspberrypi
-    branch: master
+    branch: scarthgap
 
 bblayers_conf_header:
+  shared_state_cache: |
+    SSTATE_DIR = "/home/malloc/yocto/bitbake.sstate"
+  download_directory: |
+    DL_DIR = "/home/malloc/yocto/bitbake.downloads"
   standard: |
     POKY_BBLAYERS_CONF_VERSION = "2"
     BBPATH = "${TOPDIR}"
     BBFILES ?= ""
 local_conf_header:
-  sd_card_output: |
-    IMAGE_FSTYPES="tar.bz2 rpi-sdimg"
   synaptics_killswitch: |
     LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
   reduce_diskspace: |
@@ -67,7 +69,4 @@ local_conf_header:
         HALT,${DL_DIR},100M,1K \
         HALT,${SSTATE_DIR},100M,1K \
         HALT,/tmp,10M,1K"
-  shared_state_cache: |
-    SSTATE_DIR="${HOME}/yocto/bitbake.sstate"
-  download_directory: |
-    DL_DIR="${HOME}/yocto/bitbake.downloads"
+
