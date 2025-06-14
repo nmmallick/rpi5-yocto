@@ -1,5 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+SYSTEMD_AUTO_ENABLE = "enable"
+
 SRC_URI += " \
 	file://eth.network \
 	file://en.network \
