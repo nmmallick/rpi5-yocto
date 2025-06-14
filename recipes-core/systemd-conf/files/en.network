@@ -1,0 +1,8 @@
+[Match]
+Name=en*
+KernelCommandLine=!nfsroot
+
+[Network]
+Address=192.168.0.218/24
+Gateway=192.168.0.1
+DNS=192.168.0.1

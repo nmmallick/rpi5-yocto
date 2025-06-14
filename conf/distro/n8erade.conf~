@@ -1,0 +1,7 @@
+DISTRO = "n8erade"
+DISTRO_VERSION = "0.0.1"
+
+DISTRO_FEATURES:append = " systemd usrmerge "
+
+IMAGE_FEATURES += " ssh-server-openssh"
+IMAGE_INSTALL:append = " rpi-users "
