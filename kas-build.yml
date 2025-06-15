@@ -43,8 +43,6 @@ bblayers_conf_header:
     BBPATH = "${TOPDIR}"
     BBFILES ?= ""
 local_conf_header:
-  # data: |
-  #   require conf/distro.conf
   enable_uboot: |
     RPI_USE_U_BOOT = "1"
   synaptics_killswitch: |
@@ -70,6 +68,8 @@ local_conf_header:
         HALT,${SSTATE_DIR},100M,1K \
         HALT,/tmp,10M,1K"
   shared_state_cache: |
-    SSTATE_DIR="${HOME}/yocto/bitbake.sstate"
+    SSTATE_DIR="/tmp/yocto/bitbake.sstate"
   download_directory: |
-    DL_DIR="${HOME}/yocto/bitbake.downloads"
+    DL_DIR="/tmp/yocto/bitbake.downloads"
+  tmp_directory: |
+    TMPDIR = "${TOPDIR}/tmp"
